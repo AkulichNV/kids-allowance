@@ -1,0 +1,17 @@
+.movement-money {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .movement-money {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .movement-money {
+    padding: 0 20px;
+  }
+}
