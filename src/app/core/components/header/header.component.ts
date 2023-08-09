@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  lightMode = true;
+
+  onLightMode() {
+    this.lightMode ? this.lightMode = false : this.lightMode = true;
+  }
 
 }

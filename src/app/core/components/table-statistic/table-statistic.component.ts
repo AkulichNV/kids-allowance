@@ -10,7 +10,7 @@ export interface Expenses {
 }
 
 export interface MoneyAccount {
-  date: string;
+  date: Date;
   income: number;
   spent: number;
   expenses?: Expenses[] | MatTableDataSource<Expenses>;
@@ -18,7 +18,7 @@ export interface MoneyAccount {
 }
 
 export interface MoneyAccountDataSource {
-  date: string;
+  date: Date;
   income: number;
   spent: number;
   expenses?: MatTableDataSource<Expenses>;
@@ -26,26 +26,26 @@ export interface MoneyAccountDataSource {
 }
 
 const MONEY_DATA: MoneyAccount[] = [
-  {date: '01.02.2022', income: 100, spent: 600, expenses: [{cost: 500, item: 'kinder'}, {cost: 100, item: 'chupa-chups'}], balance: 1500},
-  {date: '02.02.2022', income: 100, spent: 0, expenses: [], balance: 1600},
-  {date: '03.02.2022', income: 100, spent: 800, expenses: [{cost: 500, item: 'kinder'}, {cost: 300, item: 'crackers'}], balance: 900},
-  {date: '04.02.2022', income: 100, spent: 0, expenses: [], balance: 1000},
-  {date: '05.02.2022', income: 100, spent: 0, expenses: [], balance: 1100},
-  {date: '06.02.2022', income: 100, spent: 0, expenses: [], balance: 1200},
-  {date: '07.02.2022', income: 100, spent: 0, expenses: [], balance: 1300},
-  {date: '08.02.2022', income: 100, spent: 0, expenses: [], balance: 1400},
-  {date: '09.02.2022', income: 100, spent: 600, expenses: [{cost: 500, item: 'kinder'}, {cost: 100, item: 'chupa-chups'}], balance: 900},
-  {date: '10.02.2022', income: 100, spent: 0, expenses: [], balance: 1000},
-  {date: '11.02.2022', income: 100, spent: 0, expenses: [], balance: 1100},
-  {date: '12.02.2022', income: 100, spent: 0, expenses: [], balance: 1200},
-  {date: '13.02.2022', income: 100, spent: 0, expenses: [], balance: 1300},
-  {date: '14.02.2022', income: 100, spent: 300, expenses: [{cost: 300, item: 'ball'}], balance: 1100},
-  {date: '15.02.2022', income: 100, spent: 0, expenses: [], balance: 1200},
-  {date: '16.02.2022', income: 100, spent: 0, expenses: [], balance: 1300},
-  {date: '17.02.2022', income: 100, spent: 0, expenses: [], balance: 1400},
-  {date: '18.02.2022', income: 100, spent: 400, expenses: [{cost: 400, item: 'juice'}], balance: 1100},
-  {date: '19.02.2022', income: 100, spent: 0, expenses: [], balance: 1200},
-  {date: '20.02.2022', income: 100, spent: 0, expenses: [], balance: 1300},
+  {date: new Date("2022-05-01T12:42:19.000Z"), income: 100, spent: 600, expenses: [{cost: 500, item: 'kinder'}, {cost: 100, item: 'chupa-chups'}], balance: 1500},
+  {date: new Date("2022-05-02T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1600},
+  {date: new Date("2022-05-03T12:42:19.000Z"), income: 100, spent: 800, expenses: [{cost: 500, item: 'kinder'}, {cost: 300, item: 'crackers'}], balance: 900},
+  {date: new Date("2022-05-04T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1000},
+  {date: new Date("2022-05-05T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1100},
+  {date: new Date("2022-05-06T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1200},
+  {date: new Date("2022-05-07T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1300},
+  {date: new Date("2022-05-08T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1400},
+  {date: new Date("2022-05-09T12:42:19.000Z"), income: 100, spent: 600, expenses: [{cost: 500, item: 'kinder'}, {cost: 100, item: 'chupa-chups'}], balance: 900},
+  {date: new Date("2022-05-10T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1000},
+  {date: new Date("2022-05-11T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1100},
+  {date: new Date("2022-05-12T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1200},
+  {date: new Date("2022-05-13T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1300},
+  {date: new Date("2022-05-14T12:42:19.000Z"), income: 100, spent: 300, expenses: [{cost: 300, item: 'ball'}], balance: 1100},
+  {date: new Date("2022-05-15T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1200},
+  {date: new Date("2022-05-16T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1300},
+  {date: new Date("2022-05-17T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1400},
+  {date: new Date("2022-05-18T12:42:19.000Z"), income: 100, spent: 400, expenses: [{cost: 400, item: 'juice'}], balance: 1100},
+  {date: new Date("2022-05-19T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1200},
+  {date: new Date("2022-05-20T12:42:19.000Z"), income: 100, spent: 0, expenses: [], balance: 1300},
 ]
 
 
@@ -69,7 +69,6 @@ export class TableStatisticComponent implements AfterViewInit {
   @ViewChildren('innerTables') innerTables: QueryList<MatTable<Expenses>>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  // displayedColumns: string[] = ['date', 'income', 'expenses', 'balance'];
   dataSource = new MatTableDataSource<MoneyAccount>(MONEY_DATA);
   moneyData: MoneyAccount[] = [];
   columnsToDisplay: string[] = ['date', 'income', 'spent', 'balance'];
@@ -97,10 +96,6 @@ export class TableStatisticComponent implements AfterViewInit {
     this.cd.detectChanges();
     this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Expenses>).sort = this.innerSort.toArray()[index]);
   }
-
-  // applyFilter(filterValue: string) {
-  //   this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Expenses>).filter = filterValue.trim().toLowerCase());
-  // }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
