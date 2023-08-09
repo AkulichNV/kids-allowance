@@ -2,7 +2,6 @@
   margin: 0 40px;
   table {
     width: 100%;
-    // table-layout:fixed;
   }
 }
 
@@ -55,9 +54,8 @@ tr.element-row:not(.expanded-row):active {
   width: 100%;
 }
 
-.inner-table mat-form-field {
-  margin-top: 15px;
-  width: 100%;
+.expanded-table {
+  background-color: #e0e0e0;
 }
 
 
@@ -71,4 +69,9 @@ tr.element-row:not(.expanded-row):active {
   .table-wrapper {
     margin: 0 20px;
   }
+
+  .mat-mdc-table {
+    table-layout: fixed;
+  }
+
 }
