@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class ChangeThemeComponent {
 
+  toggleLight = true;
+  toggleDark = false;
+
+  lightClick() {
+      this.toggleLight = true;
+      this.toggleDark = !this.toggleLight;
+  }
+  darkClick() {
+    this.toggleDark = true;
+    this.toggleLight = !this.toggleDark;
+  }
+
 }
