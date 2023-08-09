@@ -16,6 +16,10 @@ import { SortBarComponent } from './core/components/sort-bar/sort-bar.component'
 import { TableStatisticComponent } from './core/components/table-statistic/table-statistic.component';
 import { ListStatisticComponent } from './core/components/list-statistic/list-statistic.component';
 import { DatepickerMYComponent } from './core/components/datepicker-m-y/datepicker-m-y.component';
+import { SettingPageComponent } from './core/pages/setting-page/setting-page.component';
+import { ChangeUserComponent } from './core/components/change-user/change-user.component';
+import { ChangeLanguageComponent } from './core/components/change-language/change-language.component';
+import { ChangeThemeComponent } from './core/components/change-theme/change-theme.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { DatepickerMYComponent } from './core/components/datepicker-m-y/datepick
     SortBarComponent,
     TableStatisticComponent,
     ListStatisticComponent,
-    DatepickerMYComponent
+    DatepickerMYComponent,
+    SettingPageComponent,
+    ChangeUserComponent,
+    ChangeLanguageComponent,
+    ChangeThemeComponent
   ],
   imports: [
     BrowserModule,
