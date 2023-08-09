@@ -20,6 +20,7 @@ import { SettingPageComponent } from './core/pages/setting-page/setting-page.com
 import { ChangeUserComponent } from './core/components/change-user/change-user.component';
 import { ChangeLanguageComponent } from './core/components/change-language/change-language.component';
 import { ChangeThemeComponent } from './core/components/change-theme/change-theme.component';
+import { LogoutComponent } from './core/components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ChangeThemeComponent } from './core/components/change-theme/change-them
     SettingPageComponent,
     ChangeUserComponent,
     ChangeLanguageComponent,
-    ChangeThemeComponent
+    ChangeThemeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

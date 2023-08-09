@@ -1,8 +1,19 @@
-.primary {
-    background-color: #3f51b5;
-}
+.language-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.gray {
-    background-color: #bdbdbd;
-    color: rgba(0, 0, 0, .38);;
+    .button-wrapper {
+        display: flex;
+        gap: 20px;
+    }
+
+    .primary {
+        background-color: #3f51b5;
+    }
+
+    .gray {
+        background-color: #bdbdbd;
+        color: rgba(0, 0, 0, .38);;
+    }
 }

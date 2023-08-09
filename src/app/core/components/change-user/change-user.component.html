@@ -1,19 +1,20 @@
-<h3>Change User</h3>
-<button mat-fab extended 
-  (click)="auroraClick()" 
-  [ngClass]="{'accent' : toggleAurora, 'gray': !toggleAurora}"
->
-  <mat-icon>favorite</mat-icon>
-  Aurora
-</button>
-
-<button mat-fab extended 
-  (click)="adrianClick()" 
-  [ngClass]="{'primary' : toggleAdrian, 'gray': !toggleAdrian}"
->
-  <mat-icon>favorite</mat-icon>
-  Adrian
-</button>
-
-
-
+<div class="user-wrapper">
+  <h3>Change User</h3>
+  <div class="button-wrapper">
+    <button mat-fab extended 
+      (click)="auroraClick()" 
+      [ngClass]="{'accent' : toggleAurora, 'gray': !toggleAurora}"
+    >
+      <mat-icon>favorite</mat-icon>
+      Aurora
+    </button>
+    
+    <button mat-fab extended 
+      (click)="adrianClick()" 
+      [ngClass]="{'primary' : toggleAdrian, 'gray': !toggleAdrian}"
+    >
+      <mat-icon>favorite</mat-icon>
+      Adrian
+    </button>
+  </div>
+</div>

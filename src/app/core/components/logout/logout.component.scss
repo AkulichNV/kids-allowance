@@ -1,0 +1,11 @@
+.logout-wrapper {
+    .mat-mdc-extended-fab>.mat-icon, .mat-mdc-extended-fab>.material-icons {
+        margin: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .logout-wrapper {
+      margin: 0 20px;
+    }
+  }

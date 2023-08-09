@@ -1,14 +1,19 @@
-<h3>Change Theme</h3>
-<button mat-fab extended 
-  (click)="lightClick()" 
-  [ngClass]="{'light' : toggleLight, 'grayLight': !toggleLight}"
->
-<mat-icon>brightness_5</mat-icon>
-</button>
+<div class="theme-wrapper">
+    <h3>Change Theme</h3>
+    <div class="button-wrapper">
+        <button mat-fab extended 
+        (click)="lightClick()" 
+        [ngClass]="{'light' : toggleLight, 'grayLight': !toggleLight}"
+        >
+        <mat-icon>brightness_5</mat-icon>
+        </button>
 
-<button mat-fab extended 
-  (click)="darkClick()" 
-  [ngClass]="{'dark' : toggleDark, 'grayDark': !toggleDark}"
->
-<mat-icon>brightness_2</mat-icon>
-</button>
+        <button mat-fab extended 
+        (click)="darkClick()" 
+        [ngClass]="{'dark' : toggleDark, 'grayDark': !toggleDark}"
+        >
+        <mat-icon>brightness_2</mat-icon>
+        </button>
+    </div>
+    
+</div>

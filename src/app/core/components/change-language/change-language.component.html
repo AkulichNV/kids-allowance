@@ -1,14 +1,18 @@
-<h3>Change Language</h3>
-<button mat-fab extended 
-  (click)="enClick()" 
-  [ngClass]="{'primary' : toggleEn, 'gray': !toggleEn}"
->
-  EN
-</button>
+<div class="language-wrapper">
+    <h3>Change Language</h3>
+    <div class="button-wrapper">
+        <button mat-fab extended 
+        (click)="enClick()" 
+        [ngClass]="{'primary' : toggleEn, 'gray': !toggleEn}"
+        >
+        EN
+        </button>
 
-<button mat-fab extended 
-  (click)="ruClick()" 
-  [ngClass]="{'primary' : toggleRu, 'gray': !toggleRu}"
->
-  RU
-</button>
+        <button mat-fab extended 
+        (click)="ruClick()" 
+        [ngClass]="{'primary' : toggleRu, 'gray': !toggleRu}"
+        >
+        RU
+        </button>
+    </div>
+</div>

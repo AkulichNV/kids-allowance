@@ -1,20 +1,32 @@
-.mat-mdc-extended-fab>.mat-icon, .mat-mdc-extended-fab>.material-icons {
-    margin: 0;
-}
-.light {
-    background-color: #ff4081; 
-}
+.theme-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.dark {
-    background-color: #69f0ae;
-}
+    .button-wrapper {
+        display: flex;
+        gap: 20px;
+    }
 
-.grayLight {
-    background-color: #424242;
-    color: rgba(255, 255, 255, .5);
-}
+    .mat-mdc-extended-fab>.mat-icon, .mat-mdc-extended-fab>.material-icons {
+        margin: 0;
+    }
+    .light {
+        background-color: #ff4081; 
+    }
+    
+    .dark {
+        background-color: #69f0ae;
+    }
+    
+    .grayLight {
+        background-color: #424242;
+        color: rgba(255, 255, 255, .5);
+    }
+    
+    .grayDark {
+        background-color: #bdbdbd;
+        color: rgba(0, 0, 0, .38);
+    }
 
-.grayDark {
-    background-color: #bdbdbd;
-    color: rgba(0, 0, 0, .38);
 }
