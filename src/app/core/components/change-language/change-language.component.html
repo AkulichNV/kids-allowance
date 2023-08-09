@@ -1,1 +1,14 @@
-<p>change-language works!</p>
+<h3>Change Language</h3>
+<button mat-fab extended 
+  (click)="enClick()" 
+  [ngClass]="{'primary' : toggleEn, 'gray': !toggleEn}"
+>
+  EN
+</button>
+
+<button mat-fab extended 
+  (click)="ruClick()" 
+  [ngClass]="{'primary' : toggleRu, 'gray': !toggleRu}"
+>
+  RU
+</button>

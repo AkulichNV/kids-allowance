@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ChangeLanguageComponent {
 
+  toggleEn = true;
+  toggleRu = false;
+
+  enClick() {
+      this.toggleEn = true;
+      this.toggleRu = !this.toggleEn;
+  }
+  ruClick() {
+    this.toggleRu = true;
+    this.toggleEn = !this.toggleRu;
+  }
 }
