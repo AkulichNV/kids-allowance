@@ -9,10 +9,13 @@ export class ChangeUserComponent {
   toggleAurora = true;
   toggleAdrian = false;
 
-  
-  enableDisableRule() {
-      this.toggleAurora = this.toggleAdrian;
+  auroraClick() {
+      this.toggleAurora = true;
       this.toggleAdrian = !this.toggleAurora;
-      
   }
+  adrianClick() {
+    this.toggleAdrian = true;
+    this.toggleAurora = !this.toggleAdrian;
+  }
+
 }
