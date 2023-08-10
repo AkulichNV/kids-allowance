@@ -5,6 +5,7 @@
       <button
         mat-raised-button
         class="toggle income-btn-toggle"
+        matTooltip="{{incomeMode ? 'Change your income' : 'Change your expenses'}}"
         color="primary"
         aria-label="income"
         (click)="onToggle()">
@@ -18,6 +19,7 @@
         <button
           matSuffix
           mat-mini-fab
+          matTooltip="Save changes"
           color="primary"
           class="input-btn-submit"
           class="submit"
