@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './core/components/header/header.component';
-import { MainPageComponent } from './core/pages/main-page/main-page.component';
+// import { MainPageComponent } from './core/pages/main-page/main-page.component';
 import { StatisticPageComponent } from './core/pages/statistic-page/statistic-page.component';
 import { MaterialModule } from 'src/material.module';
 import { BalanceComponent } from './core/components/balance/balance.component';
@@ -21,24 +21,26 @@ import { ChangeUserComponent } from './core/components/change-user/change-user.c
 import { ChangeLanguageComponent } from './core/components/change-language/change-language.component';
 import { ChangeThemeComponent } from './core/components/change-theme/change-theme.component';
 import { LogoutComponent } from './core/components/logout/logout.component';
+import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainPageComponent,
-    StatisticPageComponent,
-    BalanceComponent,
-    IncomeComponent,
-    SortBarComponent,
-    TableStatisticComponent,
-    ListStatisticComponent,
-    DatepickerMYComponent,
+    // MainPageComponent,
+    // StatisticPageComponent,
+    // BalanceComponent,
+    // IncomeComponent,
+    // SortBarComponent,
+    // TableStatisticComponent,
+    // ListStatisticComponent,
+    // DatepickerMYComponent,
     SettingPageComponent,
     ChangeUserComponent,
     ChangeLanguageComponent,
     ChangeThemeComponent,
-    LogoutComponent
+    LogoutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
