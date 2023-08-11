@@ -1,7 +1,7 @@
 <header>
   <div class="header-buttons">
     <button mat-mini-fab
-      matTooltip="Statistic page"
+      matTooltip="{{this.mainMode ? 'Statistic page' : 'Main page'}}"
       color="primary"
       aria-label="statistic"
       routerLink="{{this.mainMode ? '/statistic' : '/main'}}">
