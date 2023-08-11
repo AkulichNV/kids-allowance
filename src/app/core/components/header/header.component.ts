@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  lightMode = true;
+  mainMode: boolean;
+  currentRoute: any;
 
-  onLightMode() {
-    this.lightMode ? this.lightMode = false : this.lightMode = true;
+  constructor(private router:Router) {
+    router.events
+    .pipe(filter(event => event instanceof NavigationEnd),
+    startWith(this.router))
+    .subscribe((event: NavigationEnd) => {
+      this.currentRoute = event.url;
+      this.currentRoute === '/main' ?  this.mainMode = true : this.mainMode = false;
+    });
   }
 
 }

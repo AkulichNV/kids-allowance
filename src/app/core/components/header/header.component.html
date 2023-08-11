@@ -4,14 +4,15 @@
       matTooltip="Statistic page"
       color="primary"
       aria-label="statistic"
-      routerLink="/statistic">
-      <mat-icon>account_balance</mat-icon>
+      routerLink="{{this.mainMode ? '/statistic' : '/main'}}">
+      <mat-icon>{{this.mainMode ? 'account_balance' : 'attach_money'}}</mat-icon>
     </button>
     <h2>Hello, Aurora!</h2>
     <button mat-mini-fab
       matTooltip="Setting page"
       color="primary"
-      aria-label="setting">
+      aria-label="setting"
+      routerLink="/setting">
       <mat-icon>settings</mat-icon>
     </button>
   </div>

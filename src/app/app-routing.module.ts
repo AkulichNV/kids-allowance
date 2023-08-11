@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./core/pages/auth-page/auth-page.module').then(m => m.AuthPageModule) },
   { path: 'main', loadChildren: () => import('./core/pages/main-page/main-page.module').then(m => m.MainPageModule) },
   { path: 'statistic', loadChildren: () => import('./core/pages/statistic-page/statistic-page.module').then(m => m.StatisticPageModule) },
+  { path: 'setting', loadChildren: () => import('./core/pages/setting-page/setting-page.module').then(m => m.SettingPageModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 
