@@ -9,21 +9,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/material.module';
 import { HeaderComponent } from '../../components/header/header.component';
+import { ExpensesComponent } from '../../components/expenses/expenses.component';
 
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    // HeaderComponent,
     BalanceComponent,
-    IncomeComponent
+    IncomeComponent,
+    ExpensesComponent
   ],
   imports: [
     CommonModule,
     MainPageRoutingModule,
-    // BrowserModule,
     FormsModule,
-    // BrowserAnimationsModule,
     MatIconModule,
     MaterialModule,
     ReactiveFormsModule
