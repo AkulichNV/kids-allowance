@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/material.module';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ExpensesComponent } from '../../components/expenses/expenses.component';
+import { DialogOverviewIncomeComponent } from '../../components/dialog-overview-income/dialog-overview-income.component';
+import { DialogOverviewExpensesComponent } from '../../components/dialog-overview-expenses/dialog-overview-expenses.component';
+import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { ExpensesComponent } from '../../components/expenses/expenses.component'
     MainPageComponent,
     BalanceComponent,
     IncomeComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    DialogOverviewIncomeComponent,
+    DialogOverviewExpensesComponent,
+    TransactionsComponent
   ],
   imports: [
     CommonModule,

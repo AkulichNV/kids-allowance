@@ -1,64 +1,22 @@
 .income-section {
+  border-radius: 30px;
+  background-color: #3f51b5;
+  color: white;
+
   h3 {
+    padding-top: 10px;
     text-align: center;
   }
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  // input[type=number] {
-  //   -moz-appearance: textfield;
-  // }
-
-  .income-btn-toggle {
-    border-radius: 30px;
-    width: 150px;
-    height: 60px;
-    // padding-top: 20px;
-    // padding-bottom: 20px;
-  }
-  .input-btn-submit {
-    margin: 0 5px;
-  }
-
-  .buttonWithText {
-    overflow: hidden;
-    width: 210px;
-  }
-
-  .slider {
-    display: flex;
-    width: 200%;
-    transition: 0.5s;
-  }
-
-  .slider.expanded {
-    transform: translateX(-50%);
-  }
-
-  .toggle {
-    flex: 0 0 50%;
-  }
-
-  .income-input {
-    flex: auto;
-    padding-top: 5px;
-    padding-right: 3px;
-  }
-
-  .submit {
-    flex: none;
-    margin-right: 10px;
+  .income-context {
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 15px;
   }
 }
 
 @media (max-width: 767px) {
-  .income-section {
-    .buttonWithText {
-      width: 145px;
-    }
+  .income-context {
+    font-size: 25px;
   }
 }

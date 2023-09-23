@@ -1,43 +1,13 @@
-<section class="expenses-section">
+<section
+  class="expenses-section"
+  (click)="openDialog()">
   <h3>Expenses</h3>
-  <form class='buttonWithText'>
-    <div class='slider collapsed' [ngClass]="addClass()">
-      <button
-        mat-raised-button
-        class="toggle expenses-btn-toggle"
-        matTooltip="Change your expenses"
-        color="primary"
-        aria-label="expenses"
-        (click)="onToggle()">
-        <h2>&#8376; {{ addValue() }}</h2>
-      </button>
-
-      <div class="expenses-input">
-        <mat-form-field appearance="outline" floatLabel="always">
-          <mat-label>Item</mat-label>
-          <input matInput type="text" placeholder="Enter item">
-        </mat-form-field>
-
-        <mat-form-field  appearance="outline" floatLabel="always">
-          <mat-label>Cost</mat-label>
-          <input matInput type="number" placeholder="0"  [formControl]="form()">
-          <span matTextPrefix>&#8376;&nbsp;&nbsp;</span>
-          <button
-            matSuffix
-            mat-mini-fab
-            matTooltip="Save changes"
-            color="primary"
-            class="input-btn-submit"
-            class="submit"
-            aria-label="submit"
-            (click)="onSubmit()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-
-
-    </div>
-  </form>
+  <div class="expenses-context">
+    <p>
+      <mat-icon>arrow_upward</mat-icon>
+      &#8376;
+      {{price ? price : 0}}
+    </p>
+  </div>
 </section>
 

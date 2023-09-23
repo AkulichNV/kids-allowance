@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Hi, Aurora</h1>
+<div mat-dialog-content>
+  <p>What's your expenses today</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Daily expenses</mat-label>
+    <input
+      matInput
+      placeholder="0"
+      [(ngModel)]="data.price"
+      >
+      <span matTextPrefix>&#8376;&nbsp;&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Item</mat-label>
+    <input
+      matInput
+      [(ngModel)]="data.item"
+      >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
+

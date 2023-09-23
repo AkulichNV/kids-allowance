@@ -1,5 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogOverviewExpensesComponent } from '../dialog-overview-expenses/dialog-overview-expenses.component';
+
+export interface DialogDataExpenses {
+  price: number;
+  item: string;
+}
 
 @Component({
   selector: 'app-expenses',
@@ -7,29 +14,19 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./expenses.component.scss']
 })
 export class ExpensesComponent {
-  spending = new FormControl();
-  toggleSpending = false;
+  price = 0;
+  item: number;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  addClass() {
-    return this.toggleSpending ? 'expanded' : '';
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExpensesComponent, {
+      data: {price: this.price, item: this.item},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.price = result.price;
+      this.item = result.item;
+    });
   }
-
-  onToggle() {
-    return this.toggleSpending = true;
-  }
-
-  addValue() {
-      return this.spending.value ? this.spending.value : '0';
-  }
-
-  form() {
-    return this.spending;
-  }
-
-  onSubmit() {
-      return this.toggleSpending = false;
-  }
-
 }
