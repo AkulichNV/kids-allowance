@@ -3,27 +3,16 @@ import { AfterViewInit, ChangeDetectorRef, Component, QueryList, ViewChild, View
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Expenses } from '../../models/expenses.model';
+import { MoneyAccount } from '../../models/money-account.model';
 
-export interface Expenses {
-  cost: number;
-  item: string;
-}
-
-export interface MoneyAccount {
-  date: Date;
-  income: number;
-  spent: number;
-  expenses?: Expenses[] | MatTableDataSource<Expenses>;
-  balance: number;
-}
-
-export interface MoneyAccountDataSource {
-  date: Date;
-  income: number;
-  spent: number;
-  expenses?: MatTableDataSource<Expenses>;
-  balance: number;
-}
+// export interface MoneyAccountDataSource {
+//   date: Date;
+//   income: number;
+//   spent: number;
+//   expenses?: MatTableDataSource<Expenses>;
+//   balance: number;
+// }
 
 const MONEY_DATA: MoneyAccount[] = [
   {date: new Date("2022-05-01T12:42:19.000Z"), income: 100, spent: 600, expenses: [{cost: 500, item: 'kinder'}, {cost: 100, item: 'chupa-chups'}], balance: 1500},
