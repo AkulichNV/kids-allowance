@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Expenses } from "../models/expenses.model";
+import { MoneyAccount } from "../models/money-account.model";
+import { MoneyAccountService } from "./money-account.service";
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable()
 
 export class ExpensesService {
   expenses: Expenses[];
@@ -12,10 +12,10 @@ export class ExpensesService {
   item = '';
   expensesChanged = new Subject<Expenses[]>();
 
-  constructor() { }
+  constructor(private maService: MoneyAccountService) { }
 
-  setExpenses(items: Expenses[]) {
-    return this.expenses = items;
+  setExpense(item: Expenses) {
+    return this.expenses.push(item);
   }
 
   getExpenses() {
@@ -26,4 +26,8 @@ export class ExpensesService {
     this.expenses = newItems;
     this.expensesChanged.next(this.expenses);
   }
+
+  // addExpensesToMoneyAccount(item: Expenses) {
+  //   this.maService.addExpense(item);
+  // }
 }

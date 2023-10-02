@@ -1,1 +1,9 @@
-<p>transactions works!</p>
+<article>
+  <div class="trans-wrapper">
+    <h1>Transactions</h1>
+    <app-transactions-item
+      *ngFor="let moneyEl of moneyAccount"
+      [moneyAccount]="moneyEl">
+    </app-transactions-item>
+  </div>
+</article>

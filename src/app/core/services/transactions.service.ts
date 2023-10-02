@@ -5,13 +5,13 @@ import { Subject } from "rxjs/internal/Subject";
   providedIn: 'root'
 })
 
-export class IncomeService {
+export class TransactionsService {
   income = 100;
   incomeChanged = new Subject<number>();
 
   constructor() { }
 
-  getIncome(val: number) {
+  setIncome(val: number) {
     return this.income = val;
   }
 

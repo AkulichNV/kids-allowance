@@ -5,6 +5,7 @@ export interface MoneyAccount {
   date: Date;
   income: number;
   spent: number;
-  expenses?: Expenses[] | MatTableDataSource<Expenses>;
+  expenses?: Expenses[];
   balance: number;
 }
+// | MatTableDataSource<Expenses>

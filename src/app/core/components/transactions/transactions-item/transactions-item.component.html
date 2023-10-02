@@ -1,0 +1,18 @@
+<div class="trans-item">
+  <div class="trans-icon">
+    <mat-icon> monetization_on</mat-icon>
+  </div>
+  <div class="trans-product">
+    <h3>Allowance</h3>
+    <p class="under-day">{{ moneyAccount.date | date: 'mediumDate' }}</p>
+  </div>
+  <div class="trans-price">
+    <h2>+ &#8376; {{ moneyAccount.income }}</h2>
+  </div>
+</div>
+
+<app-transactions-expenses
+  *ngFor="let expenseEl of moneyAccount.expenses"
+  [expense]="expenseEl"
+>
+</app-transactions-expenses>

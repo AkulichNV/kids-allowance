@@ -1,4 +1,4 @@
 export interface Expenses {
-  cost: number;
+  price: number;
   item: string;
 }

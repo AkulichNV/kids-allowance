@@ -13,6 +13,8 @@ import { ExpensesComponent } from '../../components/expenses/expenses.component'
 import { DialogOverviewIncomeComponent } from '../../components/dialog-overview-income/dialog-overview-income.component';
 import { DialogOverviewExpensesComponent } from '../../components/dialog-overview-expenses/dialog-overview-expenses.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
+import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
+import { TransactionsExpensesComponent } from '../../components/transactions/transactions-expenses/transactions-expenses.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { TransactionsComponent } from '../../components/transactions/transaction
     ExpensesComponent,
     DialogOverviewIncomeComponent,
     DialogOverviewExpensesComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    TransactionsItemComponent,
+    TransactionsExpensesComponent
   ],
   imports: [
     CommonModule,
