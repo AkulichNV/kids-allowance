@@ -52,7 +52,12 @@ export class MoneyAccountService {
   }
 
   changeIncome(income: number) {
+    let prevIncome = this.MONEY_DATA[this.MONEY_DATA.length-1].income;
+    let prevBalance = this.MONEY_DATA[this.MONEY_DATA.length-1].balance;
+    let newBalance = +income + +(prevBalance - prevIncome);
+
     this.MONEY_DATA[this.MONEY_DATA.length-1].income = income;
+    this.MONEY_DATA[this.MONEY_DATA.length-1].balance = newBalance;
     this.moneyChanged.emit(this.MONEY_DATA.slice());
   }
 

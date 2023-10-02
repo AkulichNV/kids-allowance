@@ -1,11 +1,13 @@
 <main>
   <div class="balance-wrapper">
-    <h1>&#8376; 1567</h1>
-    <p>19 Nov 2022</p>
+    <h1>&#8376; {{ balance }}</h1>
+    <p>{{ dateLast | date: 'mediumDate' }}</p>
     <button mat-mini-fab
       matTooltip="Add money to your wallet"
       color="accent"
-      aria-label="plus">
+      aria-label="plus"
+      (click)="addMoney()"
+      >
     	<mat-icon>attach_money</mat-icon>
     </button>
   </div>
