@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExpensesComponent } from '../dialog-overview-expenses/dialog-overview-expenses.component';
 import { ExpensesService } from '../../services/expenses.service';
 import { MoneyAccountService } from '../../services/money-account.service';
+import { MoneyAccount } from '../../models/money-account.model';
 
 export interface DialogDataExpenses {
   price: number;
@@ -15,7 +16,9 @@ export interface DialogDataExpenses {
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.scss']
 })
-export class ExpensesComponent {
+export class ExpensesComponent implements OnInit{
+  moneyAccount: MoneyAccount[];
+  spent: number;
   price = 0;
   item: number;
 
@@ -24,16 +27,24 @@ export class ExpensesComponent {
     private maService: MoneyAccountService
     ) { }
 
+  ngOnInit(): void {
+
+  }
+
+  ngDoCheck(){
+    this.moneyAccount = this.maService.getMoney();
+    this.spent = this.moneyAccount[this.moneyAccount.length - 1].spent;
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExpensesComponent, {
       data: {price: this.price, item: this.item},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.price = result.price;
-      // this.item = result.item;
-      // console.log(result);
-      this.maService.addExpense(result);
+      if (result) {
+        this.maService.addExpense(result);
+      }
     });
   }
 }

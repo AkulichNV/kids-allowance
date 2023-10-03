@@ -6,6 +6,7 @@
       matTooltip="Add money to your wallet"
       color="accent"
       aria-label="plus"
+      *ngIf="!sameDates"
       (click)="addMoney()"
       >
     	<mat-icon>attach_money</mat-icon>

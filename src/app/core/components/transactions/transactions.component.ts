@@ -15,6 +15,10 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+  }
+
+  ngDoCheck(){
     this.moneyAccount = this.maService.getMoney().reverse();
   }
 
