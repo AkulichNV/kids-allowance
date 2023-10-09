@@ -5,21 +5,44 @@
     <mat-label>Daily expenses</mat-label>
     <input
       matInput
-      placeholder="0"
+      name="price"
+      #price="ngModel"
       [(ngModel)]="data.price"
+      required
+      pattern="^[0-9]*$"
       >
       <span matTextPrefix>&#8376;&nbsp;&nbsp;</span>
+      <mat-error
+        *ngIf="price.errors?.['required']">
+        Input price
+      </mat-error>
+      <mat-error
+        *ngIf="price.errors?.['pattern']">
+        Number only
+      </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Item</mat-label>
     <input
       matInput
+      name="item"
+      #item="ngModel"
       [(ngModel)]="data.item"
+      required
+      minlength="2"
       >
+    <mat-error
+      *ngIf="item.errors?.['required']">
+      Input item
+    </mat-error>
+    <mat-error
+      *ngIf="price.errors?.['minlength']">
+      Item must be at least 2 characters long
+    </mat-error>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="item.invalid || price.invalid" cdkFocusInitial>Ok</button>
 </div>
 

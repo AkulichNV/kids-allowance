@@ -6,12 +6,20 @@
     <input
       matInput
       placeholder="100"
+      name="income"
+      #income="ngModel"
       [(ngModel)]="data.income"
+      required
+      pattern="^[0-9]*$"
       >
       <span matTextPrefix>&#8376;&nbsp;&nbsp;</span>
+      <mat-error
+        *ngIf="income.errors?.['pattern']">
+        Number only
+    </mat-error>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.income" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data.income" [disabled]="income.invalid" cdkFocusInitial>Ok</button>
 </div>
