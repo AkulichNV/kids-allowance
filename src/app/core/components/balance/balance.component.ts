@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { MoneyAccount } from '../../models/money-account.model';
 import { MoneyAccountService } from '../../services/money-account.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-balance',
@@ -17,29 +18,22 @@ export class BalanceComponent implements OnInit {
   moneyAccount: MoneyAccount[];
 
   constructor(
-    private maService: MoneyAccountService
+    private maService: MoneyAccountService,
+    private dataStorageService: DataStorageService
   ) { }
 
   ngOnInit() {
-
-    // const len = this.moneyAccount.length;
-    // this.balance = this.moneyAccount[len - 1].balance;
-    // this.dateLast = this.moneyAccount[len - 1].date;
-    // this.dateAddOne = this.addOneDay(this.dateLast);
-
-    // toLocaleDateString();
-    // console.log(this.dateLast.toLocaleDateString(), this.dateNow.toLocaleDateString(), this.sameDates);
-    // console.log(this.moneyAccount);
-
+    this.dataStorageService.fetchAuroraMoney()
+      .subscribe();
   }
 
 
   ngDoCheck(){
-    // this.moneyAccount;
     this.moneyAccount = this.maService.getMoney();
     const len = this.moneyAccount.length;
     this.balance = this.moneyAccount[len - 1].balance;
-    this.dateLast = this.moneyAccount[len - 1].date;
+    this.dateLast = new Date(this.moneyAccount[len - 1].date);
+    console.log(this.dateLast);
     this.sameDates = this.dateLast.toLocaleDateString() === this.dateNow.toLocaleDateString();
   }
 
@@ -53,8 +47,7 @@ export class BalanceComponent implements OnInit {
       balance: this.balance + 100
     };
     this.maService.addMoney(this.moneyDay);
-    // console.log(this.dateAddOne);
-    // this.moneyAccount = this.maService.getMoney();
+    this.dataStorageService.storeAuroraMoney();
   }
 
   addOneDay(date: Date) {

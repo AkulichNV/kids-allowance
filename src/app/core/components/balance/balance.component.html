@@ -1,7 +1,8 @@
 <main>
   <div class="balance-wrapper">
+    <p>Today is {{ dateNow | date: 'mediumDate' }}</p>
     <h1>&#8376; {{ balance }}</h1>
-    <p>{{ dateLast | date: 'mediumDate' }}</p>
+    <p *ngIf="!sameDates">Last update was {{ dateLast | date: 'mediumDate' }}</p>
     <button mat-mini-fab
       matTooltip="Add money to your wallet"
       color="accent"

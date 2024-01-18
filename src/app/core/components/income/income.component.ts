@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewIncomeComponent } from '../dialog-overview-income/dialog-overview-income.component';
 import { MoneyAccountService } from '../../services/money-account.service';
 import { MoneyAccount } from '../../models/money-account.model';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 export interface DialogDataIncome {
   income: number;
@@ -19,7 +20,8 @@ export class IncomeComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private maService: MoneyAccountService
+    private maService: MoneyAccountService,
+    private dataStorageService: DataStorageService
     ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class IncomeComponent implements OnInit {
       if (resNum && typeof resNum === 'number') {
       this.maService.changeIncome(resNum);
       this.allowance = resNum;
+      this.dataStorageService.storeAuroraMoney();
       }
     });
   }

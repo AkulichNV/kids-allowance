@@ -1,0 +1,67 @@
+.register-card {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  .alert-info {
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    color: var(--info);
+    background-color: var(--background-info);
+    border: 1px solid var(--border-info);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .line{
+    height: 1px;
+    width: 280px;
+    background-color: var(--border-info);
+    float: left;
+    margin: 10px 0px;
+    padding: 0px;
+  }
+  .forms-content {
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      mat-form-field {
+        width: 300px;
+        margin-top: 10px;
+       }
+    }
+
+   .btns-confirm {
+    text-align: right;
+    a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+    a:hover {
+      color: var(--light-blue);
+    }
+    button {
+      width: 124px;
+      height: 35px;
+      background-color: var(--blue);
+      color: white;
+      align-self: center;
+      line-height: 0;
+      margin-left: 10px;
+    }
+    button:hover {
+      background-color: var(--light-blue);
+    }
+    button:disabled {
+      background-color: var(--light-blue);
+      cursor: not-allowed;
+    }
+   }
+   .alert-danger {
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: var(--danger);
+    background-color: var(--background-danger);
+    border: 1px solid var(--border-danger);
+   }
+  }
+}

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'
 import { MaterialModule } from 'src/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,7 @@ import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-foun
   declarations: [
     AppComponent,
     HeaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
 
   ],
   imports: [
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-foun
     BrowserAnimationsModule,
     MatIconModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

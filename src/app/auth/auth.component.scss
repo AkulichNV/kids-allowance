@@ -1,0 +1,24 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  .auth-btns {
+    button {
+      width: 124px;
+      height: 35px;
+      background-color: var(--blue);
+      color: white;
+      align-self: center;
+      line-height: 0;
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      border: none;
+      transform: translate3d(0, 0, 0);
+      transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+}
