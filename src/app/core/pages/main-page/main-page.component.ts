@@ -7,7 +7,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

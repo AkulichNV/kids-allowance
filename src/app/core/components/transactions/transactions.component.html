@@ -2,8 +2,16 @@
   <div class="trans-wrapper">
     <h1>Transactions</h1>
     <app-transactions-item
-      *ngFor="let moneyEl of moneyAccount"
+      *ngFor="let moneyEl of transactions"
       [moneyAccount]="moneyEl">
     </app-transactions-item>
+    <button
+      mat-raised-button
+      color="accent"
+      matTooltip="Open all transactions"
+      (click)="onOpenTransactions()"
+    >
+      {{ReadMore ? 'More...' : 'Less...'}}
+    </button>
   </div>
 </article>

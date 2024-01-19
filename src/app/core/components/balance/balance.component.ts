@@ -23,8 +23,7 @@ export class BalanceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataStorageService.fetchAuroraMoney()
-      .subscribe();
+
   }
 
 
@@ -33,7 +32,6 @@ export class BalanceComponent implements OnInit {
     const len = this.moneyAccount.length;
     this.balance = this.moneyAccount[len - 1].balance;
     this.dateLast = new Date(this.moneyAccount[len - 1].date);
-    console.log(this.dateLast);
     this.sameDates = this.dateLast.toLocaleDateString() === this.dateNow.toLocaleDateString();
   }
 
