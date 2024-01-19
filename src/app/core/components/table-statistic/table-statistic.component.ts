@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Expenses } from '../../models/expenses.model';
-import { MoneyAccount } from '../../models/money-account.model';
+// import { MoneyAccount } from '../../models/money-account.model';
 import { MoneyAccountService } from '../../services/money-account.service';
 
 export interface MoneyAccountDataSource {
@@ -15,6 +15,13 @@ export interface MoneyAccountDataSource {
   balance: number;
 }
 
+export interface MoneyAccount {
+  date: Date;
+  income: number;
+  spent: number;
+  expenses?: Expenses[] | MatTableDataSource<Expenses>;
+  balance: number;
+}
 
 @Component({
   selector: 'app-table-statistic',
@@ -40,7 +47,7 @@ export class TableStatisticComponent implements AfterViewInit {
   dataSource: MatTableDataSource<MoneyAccount>;
   moneyData: any[] = [];
   columnsToDisplay: string[] = ['date', 'income', 'spent', 'balance'];
-  innerDisplayedColumns: string[] = ['item', 'cost'];
+  innerDisplayedColumns: string[] = ['item', 'price'];
   expandedElement: MoneyAccount | null;
 
   constructor(
@@ -63,7 +70,7 @@ export class TableStatisticComponent implements AfterViewInit {
   }
 
   toggleRow(element: MoneyAccount) {
-    element.expenses.length ? (this.expandedElement = this.expandedElement === element ? null : element) : null;
+    element.expenses && (element.expenses as MatTableDataSource<Expenses>).data.length ? (this.expandedElement = this.expandedElement === element ? null : element) : null;
     this.cd.detectChanges();
     this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Expenses>).sort = this.innerSort.toArray()[index]);
   }
