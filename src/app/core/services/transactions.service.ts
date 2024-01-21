@@ -1,22 +1,45 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Subject } from "rxjs/internal/Subject";
+import { MoneyAccountService } from "./money-account.service";
+import { MoneyAccount } from "../models/money-account.model";
+import { Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TransactionsService {
-  income = 100;
-  incomeChanged = new Subject<number>();
+  // income = 100;
+  // incomeChanged = new Subject<number>();
 
-  constructor() { }
+  date: string = new Date().toISOString().slice(0, 7);
+  moneyData: MoneyAccount[];
+  moneyMonth: MoneyAccount[];
+  moneyMonthChanged = new EventEmitter<MoneyAccount[]>();
 
-  setIncome(val: number) {
-    return this.income = val;
+  constructor(private maService: MoneyAccountService) { }
+
+  setDate(val: string) {
+    this.date = val.slice(0, 7);
+    this.moneyMonthChanged.emit(this.getMonthMoney());
+    console.log(this.date, this.moneyMonth);
   }
 
-  updateIncome() {
-    this.incomeChanged.next(this.income);
+  getDate() {
+    return this.date;
+  }
+
+  doObserveMoney(): Observable<MoneyAccount[]> {
+    let moneyData = this.getMonthMoney();
+    return of(moneyData);
+  }
+
+  getMonthMoney(): MoneyAccount[] {
+    this.moneyData = this.maService.getMoney();
+    this.moneyMonth = this.moneyData.filter((el) => {
+      return (new Date(el.date).toISOString().indexOf(this.date) !== -1);
+    });
+    return this.moneyMonth;
   }
 
 }

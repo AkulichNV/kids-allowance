@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoneyAccountService } from '../../services/money-account.service';
 import { MoneyAccount } from '../../models/money-account.model';
+import { TransactionsService } from '../../services/transactions.service';
 
 @Component({
   selector: 'app-transactions',
@@ -8,13 +9,13 @@ import { MoneyAccount } from '../../models/money-account.model';
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-  moneyAccount: MoneyAccount[];
   moneyMonth: MoneyAccount[];
   transactions: MoneyAccount[];
+  currentMonth: string;
   ReadMore:boolean = true;
 
   constructor(
-    private maService: MoneyAccountService
+    private transService: TransactionsService
   ) { }
 
   ngOnInit() {
@@ -22,15 +23,10 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngDoCheck(){
-    const currentMonth = '0'+(new Date().getMonth() + 1);
-    const currentYear = new Date().getFullYear();
+    this.currentMonth = new Date().toISOString().slice(0, 7);
+    this.transService.setDate(this.currentMonth);
 
-    this.moneyAccount = this.maService.getMoney().reverse();
-
-    this.moneyMonth = this.moneyAccount.filter((el) => {
-      let dateStr = currentYear+'-'+currentMonth;
-      return (new Date(el.date).toISOString().indexOf(dateStr) !== -1);
-    });
+    this.moneyMonth = this.transService.getMonthMoney().reverse();
 
     if (this.ReadMore) {
       this.transactions = this.moneyMonth.slice(0, 5);

@@ -6,6 +6,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 import _moment from 'moment';
 import _rollupMoment from 'moment';
 import { Moment } from 'moment';
+import { TransactionsService } from '../../services/transactions.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -26,9 +27,6 @@ export const MY_FORMATS = {
   templateUrl: './datepicker-m-y.component.html',
   styleUrls: ['./datepicker-m-y.component.scss'],
   providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -39,14 +37,20 @@ export const MY_FORMATS = {
   ],
   encapsulation: ViewEncapsulation.None,
 })
+
+
 export class DatepickerMYComponent {
   date = new FormControl(moment());
+
+  constructor(private transService: TransactionsService) {}
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.date.value!;
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
     this.date.setValue(ctrlValue);
+    this.transService.setDate(this.date.getRawValue().format());
+    this.transService.getMonthMoney();
     datepicker.close();
   }
 

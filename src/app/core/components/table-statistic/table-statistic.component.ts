@@ -6,6 +6,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Expenses } from '../../models/expenses.model';
 // import { MoneyAccount } from '../../models/money-account.model';
 import { MoneyAccountService } from '../../services/money-account.service';
+import { TransactionsService } from '../../services/transactions.service';
 
 export interface MoneyAccountDataSource {
   date: Date;
@@ -52,12 +53,18 @@ export class TableStatisticComponent implements AfterViewInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private maService: MoneyAccountService
+    // private maService: MoneyAccountService
+    private transService: TransactionsService
   ) { }
 
   ngOnInit() {
-    this.MONEY_DATA = this.maService.getMoney();
-    this.dataSource = new MatTableDataSource<MoneyAccount>(this.maService.getMoney());
+    // this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
+    //   this.MONEY_DATA = data;
+    // });
+    // this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
+    //   this.dataSource = new MatTableDataSource<MoneyAccount>(data);
+    // });
+    // this.dataSource = new MatTableDataSource<MoneyAccount>(this.transService.getMonthMoney());
     this.MONEY_DATA.forEach(account => {
       if (account.expenses && Array.isArray(account.expenses) && account.expenses.length) {
         this.moneyData = [...this.moneyData, {...account, expenses: new MatTableDataSource(account.expenses)}];
@@ -67,6 +74,17 @@ export class TableStatisticComponent implements AfterViewInit {
     });
     this.dataSource = new MatTableDataSource(this.moneyData);
     this.dataSource.sort = this.sort;
+  }
+
+  ngDoCheck() {
+  //   this.MONEY_DATA = this.transService.getMonthMoney();
+  // this.dataSource = new MatTableDataSource<MoneyAccount>(this.transService.getMonthMoney());
+  this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
+    this.MONEY_DATA = data;
+  });
+  this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
+    this.dataSource = new MatTableDataSource<MoneyAccount>(data);
+  });
   }
 
   toggleRow(element: MoneyAccount) {
