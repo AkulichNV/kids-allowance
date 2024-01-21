@@ -70,7 +70,7 @@ export class TableStatisticComponent implements AfterViewInit {
   }
 
   toggleRow(element: MoneyAccount) {
-    element.expenses && (element.expenses as MatTableDataSource<Expenses>).data.length ? (this.expandedElement = this.expandedElement === element ? null : element) : null;
+    (element.expenses as MatTableDataSource<Expenses>).data && (element.expenses as MatTableDataSource<Expenses>).data.length ? (this.expandedElement = this.expandedElement === element ? null : element) : null;
     this.cd.detectChanges();
     this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Expenses>).sort = this.innerSort.toArray()[index]);
   }
