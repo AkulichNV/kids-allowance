@@ -37,6 +37,7 @@ export class TransactionsService {
     this.moneyMonth = this.moneyData.filter((el) => {
       return (new Date(el.date).toISOString().indexOf(this.date) !== -1);
     });
+    this.moneyMonthChanged.emit(this.moneyMonth);
     return this.moneyMonth;
   }
 

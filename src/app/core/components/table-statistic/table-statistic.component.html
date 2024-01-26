@@ -1,6 +1,6 @@
 <article>
   <div class="table-wrapper mat-elevation-z8">
-    <p class="errorMessage" *ngIf="!dataSource.filteredData.length">There are no data to display</p>
+    <p class="errorMessage" *ngIf="!dataSource.filteredData.length">There are no data to display yet</p>
     <table mat-table #outerSort="matSort" [dataSource]="dataSource" *ngIf="dataSource.filteredData.length" multiTemplateDataRows class="mat-elevation-z8" matSort>
 
       <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">

@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill">
   <mat-label>Month and Year</mat-label>
-  <input matInput [matDatepicker]="dp" [formControl]="date">
+  <input matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDate" [formControl]="date">
   <mat-hint>MM/YYYY</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
   <mat-datepicker #dp

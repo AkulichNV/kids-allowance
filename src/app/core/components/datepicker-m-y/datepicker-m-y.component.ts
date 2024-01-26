@@ -41,8 +41,15 @@ export const MY_FORMATS = {
 
 export class DatepickerMYComponent {
   date = new FormControl(moment());
+  minDate: Date;
+  maxDate: Date;
 
-  constructor(private transService: TransactionsService) {}
+  constructor(private transService: TransactionsService) {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    this.minDate = new Date(2024, 0, 1);
+    this.maxDate = new Date(currentYear, currentMonth + 1, 0);
+  }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.date.value!;
