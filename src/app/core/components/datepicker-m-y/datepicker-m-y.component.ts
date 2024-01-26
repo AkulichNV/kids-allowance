@@ -50,7 +50,6 @@ export class DatepickerMYComponent {
     ctrlValue.year(normalizedMonthAndYear.year());
     this.date.setValue(ctrlValue);
     this.transService.setDate(this.date.getRawValue().format());
-    this.transService.getMonthMoney();
     datepicker.close();
   }
 

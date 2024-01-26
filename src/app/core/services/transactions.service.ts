@@ -9,8 +9,6 @@ import { Observable, of } from "rxjs";
 })
 
 export class TransactionsService {
-  // income = 100;
-  // incomeChanged = new Subject<number>();
 
   date: string = new Date().toISOString().slice(0, 7);
   moneyData: MoneyAccount[];
@@ -21,8 +19,8 @@ export class TransactionsService {
 
   setDate(val: string) {
     this.date = val.slice(0, 7);
-    this.moneyMonthChanged.emit(this.getMonthMoney());
-    console.log(this.date, this.moneyMonth);
+    this.getMonthMoney();
+    this.moneyMonthChanged.emit(this.moneyMonth);
   }
 
   getDate() {

@@ -1,12 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, ChangeDetectorRef, Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnChanges, OnInit, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Expenses } from '../../models/expenses.model';
-// import { MoneyAccount } from '../../models/money-account.model';
-import { MoneyAccountService } from '../../services/money-account.service';
 import { TransactionsService } from '../../services/transactions.service';
+import { Subscription } from 'rxjs';
 
 export interface MoneyAccountDataSource {
   date: Date;
@@ -34,10 +33,10 @@ export interface MoneyAccount {
       state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
-  ],
+  ]
 })
 
-export class TableStatisticComponent implements AfterViewInit {
+export class TableStatisticComponent implements AfterViewInit, OnInit {
 
   @ViewChild('outerSort', { static: true }) sort: MatSort;
   @ViewChildren('innerSort') innerSort: QueryList<MatSort>;
@@ -50,41 +49,42 @@ export class TableStatisticComponent implements AfterViewInit {
   columnsToDisplay: string[] = ['date', 'income', 'spent', 'balance'];
   innerDisplayedColumns: string[] = ['item', 'price'];
   expandedElement: MoneyAccount | null;
+  subscription!: Subscription;
 
   constructor(
     private cd: ChangeDetectorRef,
-    // private maService: MoneyAccountService
-    private transService: TransactionsService
+    private transService: TransactionsService,
   ) { }
 
-  ngOnInit() {
-    // this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
-    //   this.MONEY_DATA = data;
-    // });
-    // this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
-    //   this.dataSource = new MatTableDataSource<MoneyAccount>(data);
-    // });
-    // this.dataSource = new MatTableDataSource<MoneyAccount>(this.transService.getMonthMoney());
-    this.MONEY_DATA.forEach(account => {
-      if (account.expenses && Array.isArray(account.expenses) && account.expenses.length) {
-        this.moneyData = [...this.moneyData, {...account, expenses: new MatTableDataSource(account.expenses)}];
-      } else {
-        this.moneyData = [...this.moneyData, account];
-      }
+
+  ngOnInit(): void {
+    this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
+      this.MONEY_DATA = this.transService.getMonthMoney();
+      this.dataSource = new MatTableDataSource<MoneyAccount>(this.MONEY_DATA);
+      this.getData();
     });
-    this.dataSource = new MatTableDataSource(this.moneyData);
-    this.dataSource.sort = this.sort;
+
+    this.subscription = this.transService.moneyMonthChanged
+    .subscribe(
+      (data: MoneyAccount[]) => {
+        this.MONEY_DATA = data;
+        this.dataSource = new MatTableDataSource<MoneyAccount>(data);
+        this.getData();
+      });
   }
 
-  ngDoCheck() {
-  //   this.MONEY_DATA = this.transService.getMonthMoney();
-  // this.dataSource = new MatTableDataSource<MoneyAccount>(this.transService.getMonthMoney());
-  this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
-    this.MONEY_DATA = data;
-  });
-  this.transService.doObserveMoney().subscribe((data: MoneyAccount[]) => {
-    this.dataSource = new MatTableDataSource<MoneyAccount>(data);
-  });
+  getData() {
+      this.moneyData = [];
+      this.MONEY_DATA.forEach(account => {
+        if (account.expenses && Array.isArray(account.expenses) && account.expenses.length) {
+          this.moneyData = [...this.moneyData, {...account, expenses: new MatTableDataSource(account.expenses)}];
+        } else {
+          this.moneyData = [...this.moneyData, account];
+        }
+      });
+      this.dataSource = new MatTableDataSource(this.moneyData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
   }
 
   toggleRow(element: MoneyAccount) {
@@ -95,5 +95,10 @@ export class TableStatisticComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
