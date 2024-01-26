@@ -42,6 +42,11 @@ export class TableStatisticComponent implements AfterViewInit, OnInit {
   @ViewChildren('innerSort') innerSort: QueryList<MatSort>;
   @ViewChildren('innerTables') innerTables: QueryList<MatTable<Expenses>>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) set matSort(sort: MatSort) {
+    if (!this.dataSource.sort) {
+        this.dataSource.sort = sort;
+    }
+}
 
   MONEY_DATA: MoneyAccount[]
   dataSource: MatTableDataSource<MoneyAccount>;
