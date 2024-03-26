@@ -6,6 +6,7 @@
       [moneyAccount]="moneyEl">
     </app-transactions-item>
     <button
+      *ngIf="transactions.length"
       mat-raised-button
       color="accent"
       matTooltip="Open all transactions"
@@ -13,5 +14,7 @@
     >
       {{ReadMore ? 'More...' : 'Less...'}}
     </button>
+    <h3
+      *ngIf="!transactions.length">There are no transactions</h3>
   </div>
 </article>
