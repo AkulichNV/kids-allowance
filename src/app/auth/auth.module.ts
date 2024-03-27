@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './pages/signup/signup.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,

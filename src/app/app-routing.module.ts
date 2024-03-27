@@ -5,7 +5,7 @@ import { MoneyResolverService } from './core/services/money-resolver.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main',  pathMatch: 'full' },
-  // { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   // { path: 'auth', loadChildren: () => import('./core/pages/auth-page/auth-page.module').then(m => m.AuthPageModule) },
   { path: 'main',
     loadChildren: () => import('./core/pages/main-page/main-page.module')

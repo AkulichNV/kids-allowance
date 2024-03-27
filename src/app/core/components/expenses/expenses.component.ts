@@ -20,7 +20,7 @@ export interface DialogDataExpenses {
 export class ExpensesComponent implements OnInit{
   moneyAccount: MoneyAccount[];
   spent: number;
-  price = 0;
+  price: number;
   item: number;
 
   constructor(
