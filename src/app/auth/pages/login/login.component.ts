@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+// import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 
@@ -10,40 +10,40 @@ import { first } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // loginForm!: FormGroup;
-  // loading = false;
-  // returnUrl!: string;
-  // error = false;
-  // errorMessage = '';
+  loginForm!: FormGroup;
+  loading = false;
+  returnUrl!: string;
+  error = false;
+  errorMessage = '';
 
-  // constructor(private fb: FormBuilder,
-  //   private authService: AuthService,
-  //   private route: ActivatedRoute,
-  //   private router: Router,
-  //   private ref: ChangeDetectorRef) { }
+  constructor(private fb: FormBuilder,
+    // private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // this.loginForm = this.fb.group({
-    //   login: new FormControl('', [Validators.required, Validators.email]),
-    //   password: new FormControl('', [Validators.required])
-    // });
-    // // this.authService.logout();
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/auth/login';
+    this.loginForm = this.fb.group({
+      login: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    });
+    // this.authService.logout();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/auth/login';
   }
 
-  // getErrorMessageLogin() {
-  //   if (this.loginForm.get('login')!.hasError('required')) {
-  //     return 'Please enter a login email';
-  //   }
-  //   return this.loginForm.get('login')!.hasError('email') ? 'The login email is invalid' : '';
-  // }
+  getErrorMessageLogin() {
+    if (this.loginForm.get('login')!.hasError('required')) {
+      return 'Please enter your login email';
+    }
+    return this.loginForm.get('login')!.hasError('email') ? 'The login email is invalid' : '';
+  }
 
-  // getErrorMessagePassword() {
-  //   return this.loginForm.get('password')!.hasError('required') ? 'Please enter a password' : '';
-  // }
+  getErrorMessagePassword() {
+    return this.loginForm.get('password')!.hasError('required') ? 'Please enter your password' : '';
+  }
 
-  // onLogin() {
-  //   this.loading = true;
+  onLogin() {
+    // this.loading = true;
         // this.authService.login(this.loginForm.get('login')!.value, this.loginForm.get('password')!.value)
         //     .pipe(first())
         //     .subscribe({
@@ -64,6 +64,6 @@ export class LoginComponent implements OnInit {
         //       }
         //     });
 
-  // }
+  }
 
 }

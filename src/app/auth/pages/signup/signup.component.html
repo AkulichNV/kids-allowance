@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<mat-card class="signup-card">
+  <mat-card-content class="signup-card-content">
+    <h2>Sign Up</h2>
+    <form [formGroup]="signupForm" class="forms-content">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="Fname" required>
+        <mat-error *ngIf="signupForm.get('Fname')!.invalid">{{getErrorFirstName()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Second Name</mat-label>
+        <input matInput formControlName="Lname" required>
+        <mat-error *ngIf="signupForm.get('Lname')!.invalid">{{getErrorLastName()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mail</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="signupForm.get('email')!.invalid">{{getErrorMessageEmail()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required >
+        <mat-error *ngIf="signupForm.get('password')!.invalid">{{getErrorMessagePassword()}}</mat-error>
+      </mat-form-field>
+      <div class="btns-confirm">
+        <a mat-button routerLink="/auth/login" style="cursor: pointer;">Log In</a>
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!signupForm.valid">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

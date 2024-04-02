@@ -1,0 +1,43 @@
+.signup-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .forms-content {
+    display: flex;
+    flex-direction: column;
+    mat-form-field {
+      width: 300px;
+      margin-top: 10px;
+    }
+   .btns-confirm {
+      display: flex;
+      justify-content: center;
+      a {
+        color: #ff4081;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #3f51b5;
+      }
+      button {
+        width: 150px;
+        height: 35px;
+        background-color: #3f51b5;
+        color: white;
+        align-self: center;
+        line-height: 0;
+        margin-left: 10px;
+      }
+      button:hover {
+        background-color: #ff4081;
+      }
+      button:disabled {
+        background-color: rgba(26, 27, 31, .12);
+        color: rgba(26, 27, 31, .38);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
