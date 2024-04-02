@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      login: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     });
     // this.authService.logout();
@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessageLogin() {
-    if (this.loginForm.get('login')!.hasError('required')) {
+    if (this.loginForm.get('email')!.hasError('required')) {
       return 'Please enter your login email';
     }
-    return this.loginForm.get('login')!.hasError('email') ? 'The login email is invalid' : '';
+    return this.loginForm.get('email')!.hasError('email') ? 'The login email is invalid' : '';
   }
 
   getErrorMessagePassword() {
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    console.log(this.loginForm.value);
     // this.loading = true;
         // this.authService.login(this.loginForm.get('login')!.value, this.loginForm.get('password')!.value)
         //     .pipe(first())

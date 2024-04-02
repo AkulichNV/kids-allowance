@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent {
 
-  // constructor(private authService: AuthService,
-  //   private router: Router) {}
+  constructor(
+    // private authService: AuthService,
+    private router: Router) {}
 
-  // onLogout() {
-  //   // this.authService.logout();
-  //   // this.admin = false;
-  //   // this.router.navigate(['/', 'auth', '/', 'login']);
-  //   this.router.navigate(['/auth/login']);
-  // }
+  onLogout() {
+    // this.authService.logout();
+    // this.admin = false;
+    // this.router.navigate(['/', 'auth', '/', 'login']);
+    this.router.navigate(['/auth/login']);
+  }
 
 }

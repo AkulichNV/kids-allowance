@@ -12,8 +12,8 @@
       <form [formGroup]="loginForm" class="login-form">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="login">
-          <mat-error *ngIf="loginForm.get('login')!.invalid">{{getErrorMessageLogin()}}</mat-error>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="loginForm.get('email')!.invalid">{{getErrorMessageLogin()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">

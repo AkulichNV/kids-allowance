@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { customValidatorPassword } from '../../helpers/utile';
-// import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-    // private authService: AuthService
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -46,6 +46,22 @@ export class SignupComponent implements OnInit {
       return 'Please enter a password';
     }
     return this.signupForm.get('password')!.hasError('customValidatorPassword') ? '' : this.signupForm.get('password')!.errors?.['Error'].message;
+  }
+
+  onSignUp() {
+    if(!this.signupForm.valid) {
+      return;
+    }
+    const email = this.signupForm.value.email;
+    const password = this.signupForm.value.password;
+
+    this.authService.signup(email, password).subscribe(
+      resData => {
+        console.log(resData);
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 
