@@ -9,13 +9,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './pages/signup/signup.component';
+import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,

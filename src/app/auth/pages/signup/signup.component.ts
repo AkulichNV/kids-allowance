@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  isLoading = false;
   signupForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -57,11 +57,15 @@ export class SignupComponent implements OnInit {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
 
+    this.isLoading = true;
+
     this.authService.signup(email, password).subscribe({
       next: (resData) => {
         console.log(resData);
+        this.isLoading = false;
       },
       error: (error) => {
+        this.isLoading = false;
         this._snackBar.open(error.error.error.message, 'Close');
       }
     })

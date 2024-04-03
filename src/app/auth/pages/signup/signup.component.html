@@ -1,5 +1,8 @@
 <mat-card class="signup-card">
-  <mat-card-content class="signup-card-content">
+  <div *ngIf="isLoading" style="margin: 25% auto;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <mat-card-content class="signup-card-content" *ngIf="!isLoading">
     <h2>Sign Up</h2>
     <form [formGroup]="signupForm" class="forms-content">
       <mat-form-field appearance="fill">
