@@ -1,8 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs';
+import { Observable, first } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthResponseData } from '../../models/auth-response-data.model';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +13,16 @@ import { first } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  loading = false;
+  isLoading = false;
   returnUrl!: string;
   error = false;
   errorMessage = '';
 
   constructor(private fb: FormBuilder,
-    // private authService: AuthService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private _snackBar: MatSnackBar,
     private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
@@ -43,27 +46,28 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.loginForm.value);
-    // this.loading = true;
-        // this.authService.login(this.loginForm.get('login')!.value, this.loginForm.get('password')!.value)
-        //     .pipe(first())
-        //     .subscribe({
-        //       error: (error) => {
-        //         this.error = true;
-        //         this.errorMessage = error.message;
-        //         this.loading = false;
-        //         this.ref.markForCheck();
-        //         this.ref.detectChanges();
-        //         },
-        //       complete: () => {
-        //         const userRole = this.authService.getRole();
-        //         if (userRole === 'ROLE_ADMIN') {
-        //           this.router.navigate(['/admin']);
-        //         } else {
-        //           this.router.navigate(['/youtube']);
-        //         }
-        //       }
-        //     });
+    // console.log(this.loginForm.value);
+      if(!this.loginForm.valid) {
+        return;
+      }
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+
+      // let authObs: Observable<AuthResponseData>
+
+      this.isLoading = true;
+
+      this.authService.login(email, password).subscribe({
+        next: (resData) => {
+          console.log(resData);
+          this.isLoading = false;
+        },
+        error: (errorMessage) => {
+          console.log(errorMessage);
+          this.isLoading = false;
+          this._snackBar.open(errorMessage, 'Close');
+        }
+      })
 
   }
 

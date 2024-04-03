@@ -1,5 +1,8 @@
 <mat-card class="register-card">
-  <mat-card-content class="register-card-content">
+  <div *ngIf="isLoading" style="margin: 25% auto;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <mat-card-content class="register-card-content" *ngIf="!isLoading">
     <!-- <div class="alert-info"> -->
       <!-- <span>Email: test@mail.com</span>
       <span>Password: test</span>  -->
@@ -23,7 +26,7 @@
         </mat-form-field>
       </form>
         <div class="btns-confirm">
-          <img *ngIf="loading" src="./assets/gif/download.gif"/>
+          <!-- <img *ngIf="loading" src="./assets/gif/download.gif"/> -->
           <a mat-button routerLink="/auth/signup" style="cursor: pointer;">Sign Up</a>
           <button
             mat-raised-button

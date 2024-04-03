@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SignupComponent implements OnInit {
   isLoading = false;
+  error: string = null;
   signupForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -64,9 +65,10 @@ export class SignupComponent implements OnInit {
         console.log(resData);
         this.isLoading = false;
       },
-      error: (error) => {
+      error: (errorMessage) => {
+
         this.isLoading = false;
-        this._snackBar.open(error.error.error.message, 'Close');
+        this._snackBar.open(errorMessage, 'Close');
       }
     })
   }
