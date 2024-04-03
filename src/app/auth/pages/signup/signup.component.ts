@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { customValidatorPassword } from '../../helpers/utile';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -13,6 +14,7 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
     private authService: AuthService
     ) { }
 
@@ -55,14 +57,14 @@ export class SignupComponent implements OnInit {
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;
 
-    this.authService.signup(email, password).subscribe(
-      resData => {
+    this.authService.signup(email, password).subscribe({
+      next: (resData) => {
         console.log(resData);
       },
-      error => {
-        console.log(error);
-      });
+      error: (error) => {
+        this._snackBar.open(error.error.error.message, 'Close');
+      }
+    })
   }
-
 
 }
