@@ -3,17 +3,19 @@ import { Injectable } from "@angular/core";
 import { catchError } from "rxjs/operators";
 import { map, Subject, throwError } from 'rxjs';
 import { AuthResponseData } from "../models/auth-response-data.model";
+import PROJECT_API_KEY from "../../../../production.js";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
+  API_KEY=PROJECT_API_KEY;
+  constructor(private http: HttpClient) {
+  }
 
   signup(email: string, password: string, ) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCbbihDhAXOH61XDe1n2kMhF_CuE26ZcHY',
+      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`,
       {
         email: email,
         password: password,
@@ -24,7 +26,8 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCbbihDhAXOH61XDe1n2kMhF_CuE26ZcHY',
+      // change push code for github and delete key
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.API_KEY}`,
       {
         email: email,
         password: password,
